@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <title>Barebones Project - Angular 4</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Barebones Project - Angular 4">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Global styles -->
+    <link href="styles/styles.css" rel="stylesheet" />
+    
+    <!-- Polyfill(s) for older browsers -->
+    <script src="dependencies/Reflect.js"></script>
+    <script src="dependencies/zone.js"></script>
+
+    <!-- App -->
+    <script src="app/bootstrap.js"></script>
+</head>
+<body>
+    <header class="navbar navbar-inner navbar-fixed-top">
+        <nav class="container">
+            <div class="navbar-header">
+              <span class="app-title">Barebones Project - Angular 4</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <app-component>
+            Loading...
+        </app-component>
+        <br /><br />
+    </main>
+
+    <footer>
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner footer">
+                <div class="container">
+                    <footer>
+                        ...
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
