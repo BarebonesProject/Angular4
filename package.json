@@ -1,0 +1,43 @@
+{
+  "name": "barebones-angular4",
+  "author": "Adrien Castex <adrien.castex@protonmail.com>",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BarebonesProject/Angular4.git"
+  },
+  "scripts": {
+    "init": "cp node_modules/zone.js/dist/zone.js frontend/dependencies/ && cp node_modules/reflect-metadata/Reflect.js frontend/dependencies/",
+    "run": "npm run build && npm run start",
+    "build": "tsc && browserify frontend/app/main.js --standalone bootstrap -o frontend/app/bootstrap.js",
+    "start": "node backend/server.js"
+  },
+  "license": "Unlicense",
+  "dependencies": {
+    "@angular/animations": "4.3.5",
+    "@angular/common": "4.3.5",
+    "@angular/compiler": "4.3.5",
+    "@angular/core": "4.3.5",
+    "@angular/forms": "4.3.5",
+    "@angular/http": "4.3.5",
+    "@angular/platform-browser": "4.3.5",
+    "@angular/platform-browser-dynamic": "4.3.5",
+    "@angular/platform-server": "4.3.5",
+    "@angular/router": "4.3.5",
+    "@angular/upgrade": "4.3.5",
+    "express": "^4.15.4",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "5.4.3",
+    "through2": "^2.0.3",
+    "zone.js": "0.8.17"
+  },
+  "devDependencies": {
+    "@types/node": "8.0.24",
+    "through": "^2.3.8"
+  },
+  "browserify": {
+    "transform": [
+      "./tools/transform.js"
+    ]
+  }
+}
