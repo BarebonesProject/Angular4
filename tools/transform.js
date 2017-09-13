@@ -1,5 +1,5 @@
 var templateUrlRegex = /templateUrl\s*:(\s*['"`](.*?)['"`]\s*)/gm;
-var stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
+var stylesRegex = /styleUrls\s*:(\s*\[[^\]]*?\])/g;
 var stringRegex = /(['`"])((?:[^\\]\\\1|.)*?)\1/g;
 
 var through = require('through2');
@@ -29,21 +29,20 @@ function go(load)
     return load.source.replace(templateUrlRegex, function(match, quote, url){
         var resolvedUrl = '/';
 
-        if (url.startsWith('.')) {
-        resolvedUrl = load.address + url.substr(1);
-        }
+        if(url.startsWith('.'))
+            resolvedUrl = load.address + url.substr(1);
 
         return 'templateUrl: "' + resolvedUrl + '"';
     })
     .replace(stylesRegex, function(match, relativeUrls) {
         var urls = [];
 
-        while ((match = stringRegex.exec(relativeUrls)) !== null) {
-        if (match[2].startsWith('.')) {
-            urls.push('"' + load.address + match[2].substr(1) + '"');
-        } else {
-            urls.push('"' + match[2] + '"');
-        }
+        while((match = stringRegex.exec(relativeUrls)) !== null)
+        {
+            if(match[2].startsWith('.'))
+                urls.push('"' + load.address + match[2].substr(1) + '"');
+            else
+                urls.push('"' + match[2] + '"');
         }
 
         return "styleUrls: [" + urls.join(', ') + "]";
