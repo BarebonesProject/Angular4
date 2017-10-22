@@ -25,7 +25,7 @@ function go(load)
     if(load.source.indexOf('moduleId') != -1)
         return load.source;
     
-    load.address = path.dirname(load.address.substr(path.join(__dirname, '..', 'frontend').length).replace(/\\/img, '/')).toString();
+    load.address = '.' + path.dirname(load.address.substr(path.join(__dirname, '..', 'frontend').length).replace(/\\/img, '/')).toString();
     return load.source.replace(templateUrlRegex, function(match, quote, url){
         var resolvedUrl = '/';
 
@@ -39,6 +39,8 @@ function go(load)
 
         while((match = stringRegex.exec(relativeUrls)) !== null)
         {
+            match[2] = match[2].replace(/\.s(?:a|c)ss$/, '.css');
+            
             if(match[2].startsWith('.'))
                 urls.push('"' + load.address + match[2].substr(1) + '"');
             else
